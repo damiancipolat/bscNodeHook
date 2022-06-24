@@ -10,8 +10,15 @@ store.save('a',3);
 console.log(store.get('a'));
 
 store.update('a',[111,222]);
-
 console.log(store.get('a'));
+
+store.save('b',3);
+console.log(store.getAll('b'));
+
+store.remove('b');
+console.log(store.getAll('b'));
+
+
 /*
 const {
     getBalance,

@@ -19,10 +19,23 @@ const update = (key,value)=>{
 
 }
 
+const remove = (key)=>{
+    
+    if (!store[key])
+        throw new Error('Key not found');
+    
+    delete store[key];
+
+};
+
 const get = (key)=>store[key];
+
+const getAll = (key)=>store;
 
 module.exports = {
     save,
     update,
-    get
+    remove,
+    get,
+    getAll
 };
