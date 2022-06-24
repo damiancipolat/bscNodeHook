@@ -1,25 +1,43 @@
 const config = require('./infraestructure/config');
 const analizer = require('./events/txAnalizer');
 const cron = require('node-cron');
-
+const store = require('./infraestructure/store/');
+const api = require('./infraestructure/bscApi');
 const watchList = require('./infraestructure/config/address');
+const address = require('./infraestructure/config/address');
 
+const EventEmitter = require('events');
+const events = new EventEmitter();
 
-const processate = ()=>{
+const {
+    onScan
+} = require('./events/onScan');
 
-    watchList.forEach(address=>{
+events.on('onScan', onScan);
 
-        console.log('>>>',address);
+const processate = async ()=>{
 
+    address.forEach(elem=>{
+        events.emit('onScan',{address:elem})
     });
-
+    
 }
-
 
 cron.schedule('*/10 * * * * *', () => {
     console.log('running 10 secondse');
     processate();
 });
+
+/*
+
+    /*
+    for (let i=0;i<=address.length-1;i++){
+
+        const addressToCheck = address[i];
+
+        
+    }*/
+
 
 /*
 
