@@ -35,7 +35,11 @@ const getTransactions = async (address)=>{
     if (status!='200')
         throw {status,error:'request error',url};
 
-    return data;    
+    const {
+        result
+    }=data;
+
+    return result;
 
 }
 

@@ -6,9 +6,7 @@ const config = {
         host:process.env.BSC_API_URL,
         token:process.env.BSC_API_TOKEN
     },
-    timer:{
-        interval:process.env.TIMER_INTERVAL
-    }
+    cronExpression:process.env.TIMER_INTERVAL    
 };
 
 module.exports = {
