@@ -19,6 +19,8 @@
   "homepage": "https://github.com/damiancipolat/bscNodeHook#readme",
   "dependencies": {
     "axios": "^0.27.2",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "node-cron": "^3.0.1",
+    "uuid": "^8.3.2"
   }
 }
