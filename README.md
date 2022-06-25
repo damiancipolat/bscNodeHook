@@ -1,6 +1,9 @@
 # BSC Node hook
 This project is a POC of how to detect changes in a BNB wallets, the idea is to create a system that can detect incoming transferences in a list of wallet addres aka (watchlist). We are using the BSC blockchain.
 
+### Purpose:
+This project was a poc to try to resolve how to detect incoming transaction of a wallet, to implement a seel feature for a exchange project.
+
 ### Stack:
 - Nodejs
 - Axios
@@ -15,9 +18,6 @@ The main strategy is make pooling in the watchlist and detect transactions, and 
 
 This diagram show the strategy applied.
 <img src="https://github.com/damiancipolat/bscNodeHook/blob/main/doc/diagram.png?raw=true" width="570px" align="center"/>
-
-### Purpose:
-This project was a poc to try to resolve how to detect incoming transaction of a wallet, to implement a seel feature for a exchange project.
 
 ### Reference:
 I have created this project in the idea presented in this yotube video:
