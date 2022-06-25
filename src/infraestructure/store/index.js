@@ -3,7 +3,7 @@ const store ={};
 const save = (key,value)=>{
 
     if (!store[key]){
-        store[key]=[value];
+        store[key]=value;
     } else {
         store[key].push(value);
     }

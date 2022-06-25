@@ -19,12 +19,13 @@ const scanAddress = async (address)=>{
 
     //Analize the differences.
     const diffTx = differences((storedTx||[]),bscTx);
-    
+    console.log('> Differences found',diffTx,'-----',diffTx.length);
+
     //if there are differeces, update it.
-    if (differences.length>0){
-        console.log(`> Detected ${differences.length} changes on address: ${address}`);
+    if (diffTx.length>0){
+        console.log(`> Detected ${diffTx.length} changes on address: ${address}`);
         store.save(address,diffTx);
-        console.log('*-***',store.getAll());
+        console.log('----->',diffTx);
     }else{
         console.log(`> No differences detected in address: ${address}`);
     }
