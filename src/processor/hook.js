@@ -2,9 +2,18 @@ const {
     hook
 } = require('../infraestructure/config/');
 
-const launch = (tx)=>{
+const dispatch = async (txList)=>{
 
-    const url = `${hookt}/url/${tx}`;
+    for (let i=0;i<=txList.length-1;i++){
+        const tx = txList[i];
+        await launch(tx);
+    }
+
+}
+
+const launch = async (tx)=>{
+
+    const url = `${hook}/url/${tx}`;
     const res = await axios.get(url);
 
     const {
@@ -15,16 +24,12 @@ const launch = (tx)=>{
     if (status!='200')
         throw {status,error:'request error',url};
     
-    const {
-        result
-    }=data;
-    
-    return result;
-
+    return data;
 
 }
 
 module.exports={
+    dispatch,
     launch
 };
 

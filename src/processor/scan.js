@@ -8,6 +8,28 @@ const {
     differences
 } = require('./util');
 
+const {
+    dispatch
+} = require('./hook');
+
+//Determine a in/out format.
+const checkOrigin = (address,trx)=>{
+
+    const {
+        to,
+        from
+    } = trx;
+
+    if (address===to)
+        return 'IN';
+    
+    if (address===from)
+        return 'OUT';
+    
+    return null;
+
+}
+
 //Analize a custom address.
 const scanAddress = async (address)=>{
 
@@ -19,13 +41,18 @@ const scanAddress = async (address)=>{
 
     //Analize the differences.
     const diffTx = differences((storedTx||[]),bscTx);
-    console.log('> Differences found',diffTx,'-----',diffTx.length);
+
+    //Incoming transactions.
+    const incomingTx = diffTx.filter(eTx=>checkOrigin(address,eTx)==='IN');
 
     //if there are differeces, update it.
-    if (diffTx.length>0){
-        console.log(`> Detected ${diffTx.length} changes on address: ${address}`);
-        store.save(address,diffTx);
-        console.log('----->',diffTx);
+    if (incomingTx.length>0){
+        console.log(`> Detected ${incomingTx.length} changes on address: ${address}`);
+        store.save(address,incomingTx);
+
+        console.log(`> Emit hook for address: ${address}`);
+        await dispatch(incomingTx);
+
     }else{
         console.log(`> No differences detected in address: ${address}`);
     }
