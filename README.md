@@ -13,5 +13,5 @@ This project is a POC of how to detect changes in a BNB wallets, the idea is to 
 ### Strategy:
 The main strategy is make pooling in the watchlist and detect transactions, and compare with registered transactions. We use a variable as memory db, this is only for testing purposes is'nt recomended in a production environment.
 
-<img src="https://github.com/damiancipolat/bscNodeHook/blob/main/doc/diagram.png?raw=true" width="550px" />
+<img src="https://github.com/damiancipolat/bscNodeHook/blob/main/doc/diagram.png?raw=true" width="560px" />
 
